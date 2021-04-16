@@ -13,38 +13,39 @@
 		<link rel = "icon" href = "images/sc_logo_CY8_icon.ico"/>
 	</head>
 	<body>
+
 		<!-- this holds the top portion of the website with a box container that holds the logo, title, search bar, search button, 
 			user icon, and cart icon --> 
-		<div class = "webPanel">
-			<img class = "scLogo" src = "images/sc_logo.png" alt = "Swift Care logo"/>
-			<h1 class = "scTitle">Swift Care</h1>
-			<form class = "searchFrame" action="">
+		<div class = "BoxPanel" id = "HeaderPanel">
+			<img class = "ScLogo" src = "images/sc_logo.png" alt = "Swift Care logo"/>
+			<h1 class = "OrbitronTitle" id = "ScTitle">Swift Care</h1>
+			<form style = "width: 70%;" action="">
 				<button type = "submit" class = "searchButton">
 					<img style = "width: 25px" src = "images/sc_search.png"/>
 				</button>
-				<input class = "searchPanel" type = "text" id = "search" name = "searchbar" placeholder = "Search..."/>
+				<input class = "InputPanel" id = "SearchPanel" type = "text" id = "search" name = "searchbar" placeholder = "Search..."/>
 			</form>
 			<a href = "sc_userlogin.html">
-				<img class = "icon" style = "margin-left: 20px" src = "images/sc_user.png" alt = "User Icon"/>
+				<img class = "Icon" id = "UserIcon" src = "images/sc_user.png" alt = "User Icon"/>
 			</a>
 			<a href = "">
-				<img class = "icon" style = "margin-right: 30px" src = "images/sc_cart.png" alt = "Cart Icon"/>
+				<img class = "Icon" id = "ViewCartIcon" src = "images/sc_cart.png" alt = "Cart Icon"/>
 			</a>
 		</div>
 
 		<!-- this is the second box container that holds categories of different medicine that can be searched for --> 
-		<div class = "boxPanel">
-			<h1 class = "categoryTitle">Category</h1>
+		<div class = "BoxPanel" id = "CategoryPanel">
+			<h1 class = "SignikaTitle" id = "CategoryTitle">Category</h1>
 			<form style = "margin-left: 20px;">
-				<input type = "checkbox" name = "med1" value = "pf"/>
-				<label class = "baseText" for = "med1">Pain & Fever</label><br>
+				<input type = "checkbox" name = "med1" value = "painfever"/>
+				<label class = "SignikaLabel" for = "med1">Pain & Fever</label><br>
 				<input type = "checkbox" name = "med2" value = "smoking"/>
-				<label class = "baseText" for = "med2">Smoking Aid</label><br>
-				<input type = "checkbox" name = "med3" value = "ccf"/>
-				<label class = "baseText" for = "med3">Cough, Cold & Flue</label><br>
+				<label class = "SignikaLabel" for = "med2">Smoking Aid</label><br>
+				<input type = "checkbox" name = "med3" value = "coughcoldflu"/>
+				<label class = "SignikaLabel" for = "med3">Cough, Cold & Flue</label><br>
 				<input type = "checkbox" name = "med4" value = "digestive"/>
-				<label class = "baseText" for = "med4">Digestive Health</label><br>
-				<input class = "categorySubmit" type = "submit" value = "Submit"/>
+				<label class = "SignikaLabel" for = "med4">Digestive Health</label><br>
+				<input class = "SubmitButton" type = "submit" value = "Submit"/>
 			</form>
 		</div>
 
@@ -52,15 +53,13 @@
 			<!-- CREATE TABLE HERE WITH PHP FUNCTIONALITIES --> 
 		<div>
 
-		<footer>
-			<div class = "centerContents">
-				<p class = "footerText" style = "margin-top: 5%;">
+		<!-- footer portion is used to showcase group number, college, and course. -->
+		<footer style = "text-align: center">
+				<p class = "SignikaText" id = "footerText">
 					&copy; 2021 - 2021 Group 2.<br/>
 					Montclair State University - Computer Science and Technology.<br/>
 					CSIT415 - Software Engineering II.
 				</p>
-			</div>
 		</footer>
-
 	</body>
 </html>

@@ -1,117 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Signika:wght@500&display=swap');
 
-body {
-	padding: 0px;
-	margin: 0px;
-}
-
-html {
-	padding: 0px;
-	margin: 0px;
-	background-image: linear-gradient(to right, #405cd4, #121c44);
-	min-width: 1000px;
-}
-
-div.webPanel {
-	background-color: #cbcbcb;
-	width: 90%;
-	height: 160px;
-	border-bottom-right-radius: 25px;
-	border-bottom-left-radius: 25px;
-	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
-	margin-left: auto;
-	margin-right: auto;
-	display: flex;
-	align-items: center;
-}
-
-div.boxPanel {
-	background-color: #cbcbcb;
-	position: relative;
-	width: 250px;
-	height: 210px;
-	border-radius: 25px;
-	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
-	margin-left: 8%;
-	margin-top: 30px;
-	padding: 20px;
-}
-
-img.scLogo {
-	max-height: 80px;
-	max-width: 80px;
-	margin-left: 5%;
-}
-
-img.icon {
-	margin-left: 10px;
-	width: 38px;
-}
-
-h1.scTitle {
-	font-size: 25pt;
-	font-family: Orbitron, sans-serif;
-	color: #283a89;
-	margin-left: 10px;
-	flex-shrink: 0;
-}
-
-h1.categoryTitle {
-	font-size: 32px;
-	font-family: 'Signika', sans-serif;
-	color: #283a89;
-	margin-top: 0;
-	margin-bottom: 0;
-}
-
-form.searchFrame {
-	width: 70%;
-}
-
-input.searchPanel {
-	float: right;
-	border-radius: 25px;
-	padding: 15px;
-	border: 0;
-	width: 40%;
-	min-width: 120px;
-}
-
-input:focus {
-    outline: 0;
-}
-
-button.searchButton {
-	float: right;
-	border-radius: 25px;
-	padding: 9px;
-	border: 0;
-	outline: 0;
-	background-color: #283a89;
-	cursor: pointer;
-}
-
-label.baseText {
-	margin-top: 10px;
-	display: inline-block;
-	font-family: 'Signika', sans-serif;
-}
-
-input.categorySubmit {
-	position: absolute;
-	bottom: 20px;
-	right: 20px;
-	border-radius: 25px;
-	border: 0;
-	font-family: 'Signika', sans-serif;
-	background-color: #283a89;
-	cursor: pointer;
-	color: white;
-	font-size: 13pt;
-	padding: 12px;
-}
-
 ::-webkit-scrollbar {
 	width: 14px;
 }
@@ -128,31 +17,158 @@ input.categorySubmit {
 	border-radius: 5px;
 }
 
-p.footerText {
-	font-family: 'Signika', sans-serif;
-	color: #cbcbcb;
-	text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8);
-	display: inline-block;
-	position: relative;
-	font-size: 10pt;
-	font-weight: bolder;
-	line-height: 1.5;
+body {
+	padding: 0px;
+	margin: 0px;
 }
 
-div.centerContents {
-	margin-top: 50px;
-	text-align:center;
+html {
+	padding: 0px;
+	margin: 0px;
+	background-image: linear-gradient(to right, #405cd4, #121c44);
+	min-width: 1000px;
 }
 
-div.divSpacing {
+div.marginContentSpace {
 	display: block;
 	margin-top: 50px;
 }
 
-input.signupPanels {
+div.BoxPanel {
+	background-color: #cbcbcb;
+	border-radius: 25px;
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+#HeaderPanel {
+	width: 90%;
+	height: 160px;
+	border-top-right-radius: 0px;
+	border-top-left-radius: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	align-items: center;
+}
+
+#CategoryPanel {
+	position: relative;
+	width: 250px;
+	height: 210px;
+	margin-left: 8%;
+	margin-top: 30px;
+	padding: 20px;
+}
+
+img.ScLogo {
+	max-height: 80px;
+	max-width: 80px;
+	margin-left: 5%;
+}
+
+img.Icon {
+	width: 38px;
+}
+
+#UserIcon {
+	margin-left: 20px;
+}
+
+#ViewCartIcon {
+	margin-left: 10px;
+	margin-right: 30px;
+}
+
+h1.OrbitronTitle {
+	font-family: Orbitron, sans-serif;
+	color: #283a89;
+}
+
+h1.SignikaTitle {
+	font-family: 'Signika', sans-serif;
+	color: #283a89;
+}
+
+#ScTitle {
+	font-size: 25pt;
+	margin-left: 10px;
+	flex-shrink: 0;
+}
+
+#CategoryTitle {
+	font-size: 32px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+input.InputPanel {
+	border-radius: 25px;
+	padding: 15px;
+	border: 0;
+}
+
+#SearchPanel {
+	float: right;
 	border-radius: 25px;
 	padding: 15px;
 	border: 0;
 	width: 40%;
 	min-width: 120px;
+}
+
+#LoginSignupPanel {
+	border-radius: 25px;
+	padding: 15px;
+	border: 0;
+	width: 40%;
+	min-width: 120px;
+}
+
+input.SubmitButton {
+	font-family: 'Signika', sans-serif;
+	background-color: #283a89;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	border-radius: 25px;
+	border: 0;
+	cursor: pointer;
+	color: white;
+	font-size: 13pt;
+	padding: 12px;
+}
+
+input:focus {
+    outline: 0;
+}
+
+button.searchButton {
+	float: right;
+	border-radius: 25px;
+	padding: 9px;
+	border: 0;
+	outline: 0;
+	background-color: #283a89;
+	cursor: pointer;
+}
+
+label.SignikaLabel {
+	font-family: 'Signika', sans-serif;
+	margin-top: 10px;
+	display: inline-block;
+}
+
+p.SignikaText {
+	font-family: 'Signika', sans-serif;
+	color: #cbcbcb;
+	font-weight: bolder;
+}
+
+#footerText {
+	text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8);
+	display: inline-block;
+	position: relative;
+	font-size: 10pt;
+	line-height: 1.5;
+	margin-top: 5%;
 }
