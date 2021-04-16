@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@500&display=swap');
+
+body {
+	padding: 0px;
+	margin: 0px;
+}
+
+html {
+	padding: 0px;
+	margin: 0px;
+	background-image: linear-gradient(to right, #405cd4, #121c44);
+	min-width: 1000px;
+}
+
+div.webPanel {
+	background-color: #cbcbcb;
+	width: 90%;
+	height: 160px;
+	border-bottom-right-radius: 25px;
+	border-bottom-left-radius: 25px;
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	align-items: center;
+}
+
+div.boxPanel {
+	background-color: #cbcbcb;
+	position: relative;
+	width: 250px;
+	height: 210px;
+	border-radius: 25px;
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+	margin-left: 8%;
+	margin-top: 30px;
+	padding: 20px;
+}
+
+img.scLogo {
+	max-height: 80px;
+	max-width: 80px;
+	margin-left: 5%;
+}
+
+img.icon {
+	margin-left: 10px;
+	width: 38px;
+}
+
+h1.scTitle {
+	font-size: 25pt;
+	font-family: Orbitron, sans-serif;
+	color: #283a89;
+	margin-left: 10px;
+	flex-shrink: 0;
+}
+
+h1.categoryTitle {
+	font-size: 32px;
+	font-family: 'Signika', sans-serif;
+	color: #283a89;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+form.searchFrame {
+	width: 70%;
+}
+
+input.searchPanel {
+	float: right;
+	border-radius: 25px;
+	padding: 15px;
+	border: 0;
+	width: 40%;
+	min-width: 120px;
+}
+
+input:focus {
+    outline: 0;
+}
+
+button.searchButton {
+	float: right;
+	border-radius: 25px;
+	padding: 9px;
+	border: 0;
+	outline: 0;
+	background-color: #283a89;
+	cursor: pointer;
+}
+
+label.baseText {
+	margin-top: 10px;
+	display: inline-block;
+	font-family: 'Signika', sans-serif;
+}
+
+input.categorySubmit {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	border-radius: 25px;
+	border: 0;
+	font-family: 'Signika', sans-serif;
+	background-color: #283a89;
+	cursor: pointer;
+	color: white;
+	font-size: 13pt;
+	padding: 12px;
+}
+
+::-webkit-scrollbar {
+	width: 14px;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px black;
+	border: 1px solid black;
+	background: #283a89;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #405cd4;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+p.footerText {
+	font-family: 'Signika', sans-serif;
+	color: #cbcbcb;
+	text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8);
+	display: inline-block;
+	position: relative;
+	font-size: 10pt;
+	font-weight: bolder;
+	line-height: 1.5;
+}
+
+div.centerContents {
+	margin-top: 50px;
+	text-align:center;
+}
+
+div.divSpacing {
+	display: block;
+	margin-top: 50px;
+}
+
+input.signupPanels {
+	border-radius: 25px;
+	padding: 15px;
+	border: 0;
+	width: 40%;
+	min-width: 120px;
+}
