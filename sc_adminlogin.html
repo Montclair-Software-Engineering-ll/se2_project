@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html style = "background-image: linear-gradient(to right, #d44040, #441212);">
+<html>
 	<head>
 		<title>Swift Care - Admin Login</title>
 		<meta charset = "utf-8"/>
@@ -8,65 +8,45 @@
 		<meta name = "description" content = "Main store page of Swift Care"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		
-		<!-- first link refers to the main.css file and second link is used for website icon -->
+		<!-- First link refers to the main.css file and second link is used for website icon -->
+		<link rel = "stylesheet" href = "red_page.css" type = "text/css">
 		<link rel = "stylesheet" href = "main.css" type = "text/css"/>
 		<link rel = "icon" href = "images/sc_logo_admin_K7A_icon.ico"/>
-		<style>
-			::-webkit-scrollbar {
-				width: 14px;
-			}
-
-			::-webkit-scrollbar-track {
-				box-shadow: inset 0 0 5px black;
-				border: 1px solid black;
-				background: #802121;
-			}
-
-			::-webkit-scrollbar-thumb {
-				background: #d44040;
-				border: 1px solid black;
-				border-radius: 5px;
-			}
-		</style>
 	</head>
 
 	<body>
 		<!-- Create a form that takes a username, email, and password. If the requirements are met, then
 			post the user details to the database -->
-		<div class = "boxPanel" style = "margin-left: auto; margin-right: auto; margin-top: 50px; text-align:center; width: 500px; height: 350px; padding: 20px;">
-			<div style = "display: flex; align-items: center;">
-				<img class = "scLogo" style = "margin-left: auto; max-width: 50px; display: inline;" src = "images/sc_logo_admin.png" alt = "Swift Care logo"/>
-				<h1 class = "scTitle" style = "margin-right: auto; font-size: 18pt; display: inline; color: #a10000;">Swift Care - Admin Login</h1>
+		<div class = "BoxPanel" id = "LoginPanel" style = "height: 350px">
+			<div style = "display: flex; align-items: center">
+				<img class = "ScLogoSmall" id = "ScLogoForm" src = "images/sc_logo_admin.png" alt = "Swift Care logo"/>
+				<h1 class = "OrbitronTitle" id = "ScTitleForm" style = "color: #a10000">Swift Care - Admin Login</h1>
 			</div>
 
 			<form action = "signup_verification.php" method = "post" autocomplete = "off">
-				<div class = "divSpacing">
-					<label class = "baseText" style = "display:inline-block; width: 120px" for = "username_sec">Username:</label>
-					<input class = "signupPanels" name = "username" type = "name" id = "username_sec" placeholder = "username123" required/>
+				<div class = "marginContentSpace">
+					<label class = "SignikaLabel" id = "LabelForm" for = "username_sec">Username:</label>
+					<input class = "InputField" id = "LoginSignupField" name = "username" type = "name" id = "username_sec" placeholder = "username123" required/>
 				</div>
-				<div class = "divSpacing">
-					<label class = "baseText" style = "display:inline-block; width: 120px" for = "pass_sec">Password:</label>
-					<input class = "signupPanels" name = "password" type = "password" id = "pass_sec" placeholder = "********" required/>
+				<div class = "marginContentSpace">
+					<label class = "SignikaLabel" id = "LabelForm" for = "pass_sec">Password:</label>
+					<input class = "InputField" id = "LoginSignupField" name = "password" type = "password" id = "pass_sec" placeholder = "********" required/>
 				</div>
-				<div>
-					<input class = "categorySubmit" style = "background-color: #a10000;" type = "submit" value = "Submit"/>
-				</div>
+					<input class = "SubmitButton" style = "background-color: #a10000" type = "submit" value = "Submit"/>
 
 				<!-- Dynamic message that tells you if there is an ERROR but originally will welcome you to the form -->
 				<div>
-					<p class = "bodyParagraph" style = "font-size: 1.5vw; font-size: 1.5vh;"><?php echo $signup_message;?></p>
+					<!-- <p class = "bodyParagraph" style = "font-size: 1.5vw; font-size: 1.5vh;"><?php echo $signup_message;?></p> -->
 				</div>
 			</form>
 		</div>
 	</body>
-	<!-- Implement copyright and year as well as my name and other footer details -->
-	<footer>
-		<div class = "centerContents">
-			<p class = "footerText" style = "margin-top: 5%">
+	<!-- Footer portion is used to showcase group number, college, and course. -->
+	<footer style = "text-align: center">
+			<p class = "SignikaText" id = "footerText">
 				&copy; 2021 - 2021 Group 2.<br/>
 				Montclair State University - Computer Science and Technology.<br/>
 				CSIT415 - Software Engineering II.
 			</p>
-		</div>
 	</footer>
 </html>
