@@ -60,10 +60,32 @@ div.BoxPanel {
 	padding: 20px;
 }
 
-img.ScLogo {
-	max-height: 80px;
+#LoginSignupPanel {
+	position: relative;
+	margin-left: auto; 
+	margin-right: auto; 
+	margin-top: 50px; 
+	text-align:center;
+	width: 500px; 
+	height: 400px; 
+	padding: 20px;
+}
+
+img.ScLogoLarge {
 	max-width: 80px;
+}
+
+#ScLogoTitle {
 	margin-left: 5%;
+}
+
+img.ScLogoSmall {
+	max-width: 50px;
+}
+
+#ScLogoForm {
+	margin-left: auto;
+	display: inline;
 }
 
 img.Icon {
@@ -77,6 +99,12 @@ img.Icon {
 #ViewCartIcon {
 	margin-left: 10px;
 	margin-right: 30px;
+}
+
+#AdminIcon {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
 }
 
 h1.OrbitronTitle {
@@ -101,25 +129,27 @@ h1.SignikaTitle {
 	margin-bottom: 0;
 }
 
-input.InputPanel {
+#ScTitleForm {
+	margin-right: auto;
+	font-size: 18pt;
+	display: inline;
+	margin-left: 10px;
+	flex-shrink: 0;
+}
+
+input.InputField {
 	border-radius: 25px;
 	padding: 15px;
 	border: 0;
 }
 
-#SearchPanel {
+#SearchField {
 	float: right;
-	border-radius: 25px;
-	padding: 15px;
-	border: 0;
 	width: 40%;
 	min-width: 120px;
 }
 
-#LoginSignupPanel {
-	border-radius: 25px;
-	padding: 15px;
-	border: 0;
+#LoginSignupField {
 	width: 40%;
 	min-width: 120px;
 }
@@ -152,10 +182,26 @@ button.searchButton {
 	cursor: pointer;
 }
 
+a.SignupButton {
+	border-radius: 25px;
+	padding: 9px; 
+	border: 0; 
+	outline: 0; 
+	background-color: #A2A2A2; 
+	font-family: 'Signika', sans-serif; 
+	text-decoration:none; 
+	color: white;
+}
+
 label.SignikaLabel {
 	font-family: 'Signika', sans-serif;
 	margin-top: 10px;
 	display: inline-block;
+}
+
+#LabelForm {
+	display:inline-block; 
+	width: 120px;
 }
 
 p.SignikaText {
