@@ -120,18 +120,19 @@ $results = $query->fetchAll();
 			</a>
 		</div>
 
-		<!-- This is the second box container that holds categories of different medicine that can be searched for --> 
+		<!-- This is the second box container that holds categories of different medicine that can be searched for -->
+		<!-- Names of categories changed to match categories of items in db; names and values of checkbox items changed for easier PHP handling --> 
 		<div class = "BoxPanel" id = "CategoryPanel">
 			<h1 class = "SignikaTitle" id = "CategoryTitle">Category</h1>
-			<form style = "margin-left: 20px">
-				<input type = "checkbox" name = "med1" value = "painfever"/>
-				<label class = "SignikaLabel" for = "med1">Pain & Fever</label><br>
-				<input type = "checkbox" name = "med2" value = "smoking"/>
-				<label class = "SignikaLabel" for = "med2">Smoking Aid</label><br>
-				<input type = "checkbox" name = "med3" value = "coughcoldflu"/>
-				<label class = "SignikaLabel" for = "med3">Cough, Cold & Flue</label><br>
-				<input type = "checkbox" name = "med4" value = "digestive"/>
-				<label class = "SignikaLabel" for = "med4">Digestive Health</label><br>
+			<form style = "margin-left: 20px" action = "index.php" method = "post">
+				<input type = "checkbox" name = "sleep" value = "Sleep Aid"/>
+				<label class = "SignikaLabel" for = "sleep">Sleep Aid</label><br>
+				<input type = "checkbox" name = "pain" value = "Pain Relief"/>
+				<label class = "SignikaLabel" for = "pain">Pain Relief</label><br>
+				<input type = "checkbox" name = "antacid" value = "Antacid"/>
+				<label class = "SignikaLabel" for = "antacid">Antacid</label><br>
+				<input type = "checkbox" name = "allergy" value = "Allergy Relief"/>
+				<label class = "SignikaLabel" for = "allergy">Allergy Relief</label><br>
 				<input class = "SubmitButton" type = "submit" value = "Submit"/>
 			</form>
 		</div>
@@ -142,16 +143,14 @@ $results = $query->fetchAll();
 				if ($results) {
 					$numCol = 0;
 					//table is created
-					echo '<table style="border: 1px solid black; border-collapse: collapse;">
-						<tr>';
+					echo '<table style="border: 1px solid black; border-collapse: collapse;"><tr>';
 
 					foreach ($results as $row) {
 						//starts a new row once 3 items have been output
 						if ($numCol == 3) {
 							$numCol = 0;
 
-							echo '</tr>
-								<tr>';
+							echo '</tr><tr>';
 						}
 
 						//each item is output in a table cell
@@ -168,8 +167,7 @@ $results = $query->fetchAll();
 						$numCol++;
 					}
 
-					echo '</tr>
-					</table>';
+					echo '</tr></table>';
 				}
 			?>
 		</div>
