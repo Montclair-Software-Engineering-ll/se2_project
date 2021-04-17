@@ -95,45 +95,44 @@ $results = $query->fetchAll();
 		<meta name = "description" content = "Main store page of Swift Care"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		
-		<!-- first link refers to the main.css file and second link is used for website icon -->
+		<!-- First link refers to the main.css file and second link is used for website icon -->
+		<link rel = "stylesheet" href = "blue_page.css" type = "text/css">
 		<link rel = "stylesheet" href = "main.css" type = "text/css"/>
 		<link rel = "icon" href = "images/sc_logo_CY8_icon.ico"/>
 	</head>
 	<body>
-		<!-- this holds the top portion of the website with a box container that holds the logo, title, search bar, search button, 
-			user icon, and cart icon --> 
-		<div class = "webPanel">
-			<img class = "scLogo" src = "images/sc_logo.png" alt = "Swift Care logo"/>
-			<h1 class = "scTitle">Swift Care</h1>
-			<form class = "searchFrame" action="index.php" method="post">
+
+		<!-- This holds the top portion of the website with a box container that holds the logo, title, search bar, search button, user icon, and cart icon --> 
+		<div class = "BoxPanel" id = "HeaderPanel">
+			<img class = "ScLogoLarge" id = "ScLogoTitle" src = "images/sc_logo.png" alt = "Swift Care logo"/>
+			<h1 class = "OrbitronTitle" id = "ScTitle">Swift Care</h1>
+			<form style = "width: 70%" action="">
 				<button type = "submit" class = "searchButton">
 					<img style = "width: 25px" src = "images/sc_search.png"/>
 				</button>
-				<input class = "searchPanel" type = "text" id = "search" name = "searchbar" placeholder = "Search..."/>
+				<input class = "InputField" id = "SearchField" type = "text" id = "search" name = "searchbar" placeholder = "Search..."/>
 			</form>
-			<a href = "">
-				<img class = "icon" style = "margin-left: 20px" src = "images/sc_user.png" alt = "User Icon"/>
+			<a href = "sc_userlogin.html">
+				<img class = "Icon" id = "UserIcon" src = "images/sc_user.png" alt = "User Icon"/>
 			</a>
 			<a href = "">
-				<img class = "icon" style = "margin-right: 30px" src = "images/sc_cart.png" alt = "Cart Icon"/>
+				<img class = "Icon" id = "ViewCartIcon" src = "images/sc_cart.png" alt = "Cart Icon"/>
 			</a>
 		</div>
 
-		<!-- this is the second box container that holds categories of different medicine that can be searched for --> 
-		<!-- names of categories changed to match categories of items in db; names and values of checkbox items changed
-		for easier PHP handling -->
-		<div class = "categoryPanel">
-			<h1 class = "categoryTitle">Category</h1>
-			<form style = "margin-left: 20px" action="index.php" method="post">
-				<input type = "checkbox" name = "sleep" value = "Sleep Aid"/>
-				<label class = "categoryText" for = "sleep">Sleep Aid</label><br>
-				<input type = "checkbox" name = "pain" value = "Pain Relief"/>
-				<label class = "categoryText" for = "pain">Pain Relief</label><br>
-				<input type = "checkbox" name = "antacid" value = "Antacid"/>
-				<label class = "categoryText" for = "antacid">Antacid</label><br>
-				<input type = "checkbox" name = "allergy" value = "Allergy Relief"/>
-				<label class = "categoryText" for = "allergy">Allergy Relief</label><br>
-				<input class = "categorySubmit" type = "submit" value = "Submit"/>
+		<!-- This is the second box container that holds categories of different medicine that can be searched for --> 
+		<div class = "BoxPanel" id = "CategoryPanel">
+			<h1 class = "SignikaTitle" id = "CategoryTitle">Category</h1>
+			<form style = "margin-left: 20px">
+				<input type = "checkbox" name = "med1" value = "painfever"/>
+				<label class = "SignikaLabel" for = "med1">Pain & Fever</label><br>
+				<input type = "checkbox" name = "med2" value = "smoking"/>
+				<label class = "SignikaLabel" for = "med2">Smoking Aid</label><br>
+				<input type = "checkbox" name = "med3" value = "coughcoldflu"/>
+				<label class = "SignikaLabel" for = "med3">Cough, Cold & Flue</label><br>
+				<input type = "checkbox" name = "med4" value = "digestive"/>
+				<label class = "SignikaLabel" for = "med4">Digestive Health</label><br>
+				<input class = "SubmitButton" type = "submit" value = "Submit"/>
 			</form>
 		</div>
 
@@ -173,6 +172,15 @@ $results = $query->fetchAll();
 					</table>';
 				}
 			?>
-		<div>
+		</div>
+
+		<!-- Footer portion is used to showcase group number, college, and course. -->
+		<footer style = "text-align: center">
+				<p class = "SignikaText" id = "footerText">
+					&copy; 2021 - 2021 Group 2.<br/>
+					Montclair State University - Computer Science and Technology.<br/>
+					CSIT415 - Software Engineering II.
+				</p>
+		</footer>
 	</body>
 </html>
