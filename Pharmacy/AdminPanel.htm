@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Css/Index.css">
+    <title>Ada's Pharmacy</title>
+</head>
+<body>
+  <div class="box bg-img">
+    <div class="content">
+      <h2>Ada's<span> Pharmacy</span></h2>
+            <h2>ADMIN<span> PANEL</span></h2>
+            <button class="login-btn" onclick="document.location='./Admin/Sale.php'">SALES</button>
+            <button class="login-btn" onclick="document.location='./Admin/CustomerDetail.php'">CUSTOMER DETAILS</button>
+            <button class="login-btn" onclick="document.location='AddEmp.htm'">ADD EMPLOYEE</button>
+            <button class="login-btn" onclick="document.location='Insertproduct.htm'">ADD PRODUCT</button>
+            <h2>DELETE<span> USERS</span></h2>
+               <div class="forms">
+                  <div class="user-input">
+                     <form action="./Admin/DeleteEmp.php" method="POST">
+                       <p>Search Employee:</p>
+                          <input type="text" class="login-input" placeholder="Enter Employee ID" id="Term" name="Term" required>
+                        </div>
+                    </div>
+                   <button class="login-btn">Delete</button>
+                </form>
+              <p class="f-pass"><a href="./Database/Logout.php">LOGOUT!</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Css/index.css">
+    <title>Homepage - Customer Panel</title>
+</head>
+<body>
+    <div class="box bg-img">
+        <div class="content">
+            <h2>Ada's<span> Pharmacy</span></h2>
+            <button class="login-btn" onclick="document.location='./Product/Product.php'">See Products</button>
+            <button class="login-btn" onclick="document.location='./User/UserOrder.php'">See Your Order</button>
+            <h2>Search<span> Meds</span></h2>
+            <div class="forms">
+                <div class="user-input">
+                    <form action="./User/SearchMed.php" method="post">
+                        <p>Search Type:</p>
+                        <input type="text" class="login-input" placeholder="Enter name" id="Term" name="Term" required>
+                        <button class="login-btn">Search</button>
+                        <p class="f-pass"><a href="./Database/Logout.php">LOGOUT!</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
