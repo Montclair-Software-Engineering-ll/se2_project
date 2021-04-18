@@ -1,32 +1,66 @@
 <?php
-
-include("../Database/Connection.php");
+//includes db connection
+require_once 'databaseConnection.php';
 
 // Start Session
 session_start();
 
-$email = $_POST['email'];
+//$pass = password_hash('*****', PASSWORD_DEFAULT);
+//$query = $db->prepare("update admins set password = :pass where username = '*******'");
+//$query->bindParam(":pass", $pass);
+//if ($query->execute()) {
+//echo 'password updated';
+//}
+
+//checks if user is already logged in
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+  //if already logged in, redirects user to homepage
+  $_SESSION['already_li'] = true;
+  header('Location: index.php');
+}
+
+$username = $_POST['username'];
 $password = $_POST['password'];
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $email = stripcslashes($email);
-    $email = mysqli_real_escape_string($conn,$email);
-    $password = stripcslashes($password);
-    $password = mysqli_real_escape_string($conn,$password);
+$username = trim($username);
+$password = trim($password);
 
-    $sql = "SELECT * FROM admin where email = '$email' and password = '$password' ";
-    $result = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-    $counter = mysqli_num_rows($result);
+$sql = "SELECT * FROM admins where username = :username and password = :password ";
+//preparese db query
+$query = $db->prepare($sql);
+$password = '%'.$password.'%';
+$query->bindParam(':password', $password);
+$username = '%'.$username.'%';
+$query->bindParam(':username', $username);
+//runs query and gets results
+$query->execute();
+$results = $query->fetchAll();
 
-    if($counter == 1){
-        $_SESSION['login_user'] = $email;
-        header("location: ../sc_adminlogin.html");
-    }else{
-        echo "<script>
-        alert('Something Went Wrong!');
-        window.location.href = '../sc_adminlogin.html"';
-        </script>";
-    }
-}
+      $counter = mysqli_num_rows($result);
+
+    //checks if username exists in db
+    	if (!$result) {
+    		// if username does not exist, redirects to login page
+    		$_SESSION['login_fail'] = true;
+    		header('Location: sc_adminlogin.html');
+
+    		//closes db connection
+    		$db = null;
+    		exit();
+    	}
+
+    	// checks if password is correct
+    	else if (password_verify($pass, $result['pass'])) {
+    		//if password is correct, redirects to homepage
+    		$_SESSION['logged_in'] = true;
+    		$_SESSION['user'] = $user;
+    		$_SESSION['new_log'] = true;
+    		header('Location: index.php');
+    	}
+
+    	// if password is incorrect, redirects to login page
+    	else {
+    		$_SESSION['login_fail'] = true;
+    		header('Location: sc_adminlogin.html');
+    	}
 ?>

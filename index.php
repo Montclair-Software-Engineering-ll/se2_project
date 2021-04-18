@@ -5,6 +5,13 @@ require_once 'databaseConnection.php';
 //includes session info
 session_start();
 
+//informs the user they have newly logged in
+if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
+		$notice = "<p class='text-success'>You are now logged in!</p>";
+
+		unset($_SESSION['new_log']);
+} 
+
 //general search statement for if no search was performed
 $stmt = 'select name, description, price, image from products';
 
@@ -94,15 +101,16 @@ $results = $query->fetchAll();
 		<meta name = "author" content = "SE2 - Group 2"/>
 		<meta name = "description" content = "Main store page of Swift Care"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		
+
 		<!-- First link refers to the main.css file and second link is used for website icon -->
 		<link rel = "stylesheet" href = "blue_page.css" type = "text/css">
 		<link rel = "stylesheet" href = "main.css" type = "text/css"/>
 		<link rel = "icon" href = "images/sc_logo_CY8_icon.ico"/>
 	</head>
 	<body>
-
-		<!-- This holds the top portion of the website with a box container that holds the logo, title, search bar, search button, user icon, and cart icon --> 
+		<!--outputs notice for user-->
+		<?php echo $notice; ?>
+		<!-- This holds the top portion of the website with a box container that holds the logo, title, search bar, search button, user icon, and cart icon -->
 		<div class = "BoxPanel" id = "HeaderPanel">
 			<img class = "ScLogoLarge" id = "ScLogoTitle" src = "images/sc_logo.png" alt = "Swift Care logo"/>
 			<h1 class = "OrbitronTitle" id = "ScTitle">Swift Care</h1>
@@ -121,7 +129,7 @@ $results = $query->fetchAll();
 		</div>
 
 		<!-- This is the second box container that holds categories of different medicine that can be searched for -->
-		<!-- Names of categories changed to match categories of items in db; names and values of checkbox items changed for easier PHP handling --> 
+		<!-- Names of categories changed to match categories of items in db; names and values of checkbox items changed for easier PHP handling -->
 		<div class = "BoxPanel" id = "CategoryPanel">
 			<h1 class = "SignikaTitle" id = "CategoryTitle">Category</h1>
 			<form style = "margin-left: 20px" action = "index.php" method = "post">
@@ -139,7 +147,7 @@ $results = $query->fetchAll();
 
 		<!-- all/searched products output -->
 		<div>
-			<?php 
+			<?php
 				if ($results) {
 					$numCol = 0;
 					//table is created
