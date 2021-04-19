@@ -1,6 +1,6 @@
 <?php
 //includes db connection
-require_once 'databaseConnection.php';
+require_once 'database_connection.php';
 
 //includes session info
 session_start();
@@ -104,8 +104,8 @@ $results = $query->fetchAll();
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		
 		<!-- First link refers to the main.css file and second link is used for website icon -->
-		<link rel = "stylesheet" href = "blue_page.css" type = "text/css">
-		<link rel = "stylesheet" href = "main.css" type = "text/css"/>
+		<link rel = "stylesheet" href = "css/blue_page.css" type = "text/css">
+		<link rel = "stylesheet" href = "css/main.css" type = "text/css"/>
 		<link rel = "icon" href = "images/sc_logo_CY8_icon.ico"/>
 	</head>
 	<body>
@@ -122,10 +122,10 @@ $results = $query->fetchAll();
 				</button>
 				<input class = "InputField" type = "text" id = "SearchField" name = "searchbar" placeholder = "Search..."/>
 			</form>
-			<a href = "sc_userlogin.html">
+			<a href = "user_login.php">
 				<img class = "Icon" id = "UserIcon" src = "images/sc_user.png" alt = "User Icon"/>
 			</a>
-			<a href = "">
+			<a href = "#">
 				<img class = "Icon" id = "ViewCartIcon" src = "images/sc_cart.png" alt = "Cart Icon"/>
 			</a>
 		</div>
