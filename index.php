@@ -5,12 +5,13 @@ require_once 'databaseConnection.php';
 //includes session info
 session_start();
 
-//informs the user they have newly logged in
-if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
-		$notice = "<p class='text-success'>You are now logged in!</p>";
+$notice = "";
 
-		unset($_SESSION['new_log']);
-} 
+if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
+        $notice = "<p>You are now logged in!</p>";
+
+        unset($_SESSION['new_log']);
+}
 
 //general search statement for if no search was performed
 $stmt = 'select name, description, price, image from products';
@@ -101,7 +102,7 @@ $results = $query->fetchAll();
 		<meta name = "author" content = "SE2 - Group 2"/>
 		<meta name = "description" content = "Main store page of Swift Care"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-
+		
 		<!-- First link refers to the main.css file and second link is used for website icon -->
 		<link rel = "stylesheet" href = "blue_page.css" type = "text/css">
 		<link rel = "stylesheet" href = "main.css" type = "text/css"/>
@@ -109,16 +110,17 @@ $results = $query->fetchAll();
 	</head>
 	<body>
 		<!--outputs notice for user-->
-		<?php echo $notice; ?>
-		<!-- This holds the top portion of the website with a box container that holds the logo, title, search bar, search button, user icon, and cart icon -->
+       	<?php echo $notice; ?>
+
+		<!-- This holds the top portion of the website with a box container that holds the logo, title, search bar, search button, user icon, and cart icon --> 
 		<div class = "BoxPanel" id = "HeaderPanel">
 			<img class = "ScLogoLarge" id = "ScLogoTitle" src = "images/sc_logo.png" alt = "Swift Care logo"/>
 			<h1 class = "OrbitronTitle" id = "ScTitle">Swift Care</h1>
-			<form style = "width: 70%" action="">
+			<form style = "width: 70%" action = "index.php" method = "post">
 				<button type = "submit" class = "searchButton">
 					<img style = "width: 25px" src = "images/sc_search.png"/>
 				</button>
-				<input class = "InputField" id = "SearchField" type = "text" id = "search" name = "searchbar" placeholder = "Search..."/>
+				<input class = "InputField" type = "text" id = "SearchField" name = "searchbar" placeholder = "Search..."/>
 			</form>
 			<a href = "sc_userlogin.html">
 				<img class = "Icon" id = "UserIcon" src = "images/sc_user.png" alt = "User Icon"/>
@@ -129,10 +131,10 @@ $results = $query->fetchAll();
 		</div>
 
 		<!-- This is the second box container that holds categories of different medicine that can be searched for -->
-		<!-- Names of categories changed to match categories of items in db; names and values of checkbox items changed for easier PHP handling -->
-		<div class = "BoxPanel" id = "CategoryPanel">
+		<!-- Names of categories changed to match categories of items in db; names and values of checkbox items changed for easier PHP handling --> 
+		<div class = "BoxPanel" id = "CategoryPanel" style = "display: inline-block; vertical-align: top">
 			<h1 class = "SignikaTitle" id = "CategoryTitle">Category</h1>
-			<form style = "margin-left: 20px" action = "index.php" method = "post">
+			<form style = "margin-left: 20px;" action = "index.php" method = "post">
 				<input type = "checkbox" name = "sleep" value = "Sleep Aid"/>
 				<label class = "SignikaLabel" for = "sleep">Sleep Aid</label><br>
 				<input type = "checkbox" name = "pain" value = "Pain Relief"/>
@@ -143,50 +145,41 @@ $results = $query->fetchAll();
 				<label class = "SignikaLabel" for = "allergy">Allergy Relief</label><br>
 				<input class = "SubmitButton" type = "submit" value = "Submit"/>
 			</form>
-		</div>
 
-		<!-- all/searched products output -->
-		<div>
-			<?php
-				if ($results) {
-					$numCol = 0;
-					//table is created
-					echo '<table style="border: 1px solid black; border-collapse: collapse;"><tr>';
-
-					foreach ($results as $row) {
-						//starts a new row once 3 items have been output
-						if ($numCol == 3) {
-							$numCol = 0;
-
-							echo '</tr><tr>';
-						}
-
-						//each item is output in a table cell
-						echo '<td style="border: 1px solid black;">
-							<img src="'.$row['image'].'" alt="product image">
-							<br>
-							<p>'.$row['name'].'</p>
-							<br>
-							<p>'.$row['description'].'</p>
-							<br>
-							<p>$'.$row['price'].'</p>
-							</td>';
-
-						$numCol++;
-					}
-
-					echo '</tr></table>';
-				}
-			?>
-		</div>
-
-		<!-- Footer portion is used to showcase group number, college, and course. -->
-		<footer style = "text-align: center">
+			<!-- Footer portion is used to showcase group number, college, and course. -->
+			<footer style = "margin-top: 100px; text-align: center;">
 				<p class = "SignikaText" id = "footerText">
 					&copy; 2021 - 2021 Group 2.<br/>
 					Montclair State University - Computer Science and Technology.<br/>
 					CSIT415 - Software Engineering II.
 				</p>
-		</footer>
+			</footer>
+		</div>
+
+		<!-- all/searched products output -->
+		<div style = "display: inline-block; position: absolute; margin-left: 40px; margin-right: 180px;">
+			<?php 
+				if ($results) {
+					//table is created
+					foreach ($results as $row) {
+						//starts a new row once 3 items have been outpu
+						//each item is output in a table cell
+						echo '
+							<div style = "display: inline-block; padding: 20px; vertical-align: top;">
+								<div class = "BoxPanel" style = "text-align: center; border-radius: 0px; width: 325px; height: 480px; padding: 20px; position: relative">
+									<img style = "border: 2px solid black; width: 200px; height: 200px" src="'. $row['image'].'" alt="product image">
+									<p class = "SignikaText" style = "color: black;">'.$row['name'].'</p>
+									<p class = "SignikaText" style = "color: black;">'.$row['description'].'</p>
+									<p class = "SignikaText" style = "color: yellow; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">$'.$row['price'].'</p>
+									<form action = "" method = "post" autocomplete = "off">
+										<input class = "SubmitButton" type = "submit" value = "Add to Cart"/>
+									</form>
+								</div>
+							</div>
+						';
+					}
+				}
+			?>
+		</div>
 	</body>
 </html>
