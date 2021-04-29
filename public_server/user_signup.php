@@ -1,3 +1,17 @@
+<?php
+// Start Session
+session_start();
+
+$notice = '';
+
+// checks if the user tried to login and failed
+if (isset($_SESSION['signup_failed']) && $_SESSION['signup_failed'] == true) {
+		$notice = '<p>Username or email already taken. Please try again.</p>';
+
+		unset($_SESSION['signup_failed']);
+	}
+?>
+
 <!DOCTYPE html>
 
 <html>
