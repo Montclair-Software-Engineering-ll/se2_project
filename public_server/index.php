@@ -7,10 +7,31 @@ session_start();
 
 $notice = "";
 
+//checks if user is logged in
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+	$user_icon_link = "#";
+	$cart_icon_link = "#";
+	//TODO: create page for user profile
+	//TODO: create page for cart
+}
+
+else {
+	$user_icon_link = "user_login.php";
+	$cart_icon_link = "user_login.php";
+}
+
+//checks if user has newly logged in
 if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
         $notice = "<p>You are now logged in!</p>";
 
         unset($_SESSION['new_log']);
+}
+
+//checks if user has newly signed up
+if (isset($_SESSION['su_success']) && $_SESSION['su_success'] == true) {
+	$notice = "<p>Signup successful!</p>";
+
+	unset($_SESSION['su_success']);
 }
 
 //general search statement for if no search was performed
@@ -122,10 +143,10 @@ $results = $query->fetchAll();
 				</button>
 				<input class = "InputField" type = "text" id = "SearchField" name = "searchbar" placeholder = "Search..."/>
 			</form>
-			<a href = "user_login.php">
+			<a href = "<?php echo $user_icon_link?>">
 				<img class = "Icon" id = "UserIcon" src = "images/sc_user.png" alt = "User Icon"/>
 			</a>
-			<a href = "#">
+			<a href = "<?php echo $cart_icon_link?>">
 				<img class = "Icon" id = "ViewCartIcon" src = "images/sc_cart.png" alt = "Cart Icon"/>
 			</a>
 		</div>
@@ -171,7 +192,7 @@ $results = $query->fetchAll();
 									<p class = "SignikaText" style = "color: black;">'.$row['name'].'</p>
 									<p class = "SignikaText" style = "color: black;">'.$row['description'].'</p>
 									<p class = "SignikaText" style = "color: yellow; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">$'.$row['price'].'</p>
-									<form action = "" method = "post" autocomplete = "off">
+									<form action = "#" method = "post" autocomplete = "off">
 										<input class = "SubmitButton" type = "submit" value = "Add to Cart"/>
 									</form>
 								</div>

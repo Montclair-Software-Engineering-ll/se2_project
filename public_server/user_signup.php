@@ -1,3 +1,24 @@
+<?php
+	// Start Session
+	session_start();
+
+	$notice = '';
+
+	// checks if the user tried to sign up and failed
+	if (isset($_SESSION['signup_failed']) && $_SESSION['signup_failed'] == true) {
+		$notice = '<p>Username or email already taken. Please try again.</p>';
+
+		unset($_SESSION['signup_failed']);
+	}
+
+	//checks if there was an error during sign up
+	if (isset($_SESSION['signup_error']) && $_SESSION['signup_error'] == true) {
+		$notice = '<p>An error occurred while signing up. Please try again.</p>';
+
+		unset($_SESSION['signup_failed']);
+	}
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -7,7 +28,7 @@
 		<meta name = "author" content = "SE2 - Group 2"/>
 		<meta name = "description" content = "Main store page of Swift Care"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		
+
 		<!-- First link refers to the main.css file and second link is used for website icon -->
 		<link rel = "stylesheet" href = "css/blue_page.css" type = "text/css">
 		<link rel = "stylesheet" href = "css/main.css" type = "text/css"/>
@@ -15,6 +36,9 @@
 	</head>
 
 	<body>
+		<?php
+		echo $notice;
+		?>
 		<!-- Create a form that takes a username, email, and password. If the requirements are met, then post the user details to the database -->
 		<div class = "BoxPanel" id = "LoginPanel" style = "height: 450px">
 			<div style = "display: flex; align-items: center">
@@ -22,7 +46,7 @@
 				<h1 class = "OrbitronTitle" id = "ScTitleForm">Swift Care - User Sign Up</h1>
 			</div>
 
-			<form action = "#" method = "post" autocomplete = "off">
+			<form action = "process/signup_process.php" method = "post" autocomplete = "off">
 				<div class = "marginContentSpace">
 					<label class = "SignikaLabel" id = "LabelForm" for = "username_sec">Username:</label>
 					<input class = "InputField" id = "LoginSignupField" name = "username" type = "name" id = "username_sec" placeholder = "username123" required/>
