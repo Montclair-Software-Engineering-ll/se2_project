@@ -7,10 +7,31 @@ session_start();
 
 $notice = "";
 
-if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
-        $notice = "<p>You are now logged in!</p>";
+//checks if user is logged in
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+	$user_icon_link = "#";
+	$cart_icon_link = "cart.php";
+	//TODO: create page for user profile
+	//TODO: create page for cart
+}
 
-        unset($_SESSION['new_log']);
+else {
+	$user_icon_link = "user_login.php";
+	$cart_icon_link = "user_login.php";
+}
+
+//checks if user has newly logged in
+if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
+	$notice = "<p>You are now logged in!</p>";
+
+	unset($_SESSION['new_log']);
+}
+
+//checks if user has newly signed up
+if (isset($_SESSION['su_success']) && $_SESSION['su_success'] == true) {
+$notice = "<p>Signup successful!</p>";
+
+unset($_SESSION['su_success']);
 }
 
 //general search statement for if no search was performed
