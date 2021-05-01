@@ -22,12 +22,33 @@
 	$return = $query->fetch();
     $user_id = $return['id'];
 
-    //inserts item into user's cart
-    $stmt = 'insert into cart values (:user_id, :prod_id, 1)';
+    //checks if item already exists in cart
+    $stmt = 'select qty from cart where user_id = :user_id and prod_id = :prod_id';
     $query = $db->prepare($stmt);
     $query->bindParam(':user_id', $user_id);
     $query->bindParam(':prod_id', $prod_id);
-    
+    $query->execute();
+    $return = $query->fetch();
+
+    $new_qty = $return['qty'] + 1;
+
+    //if item already exists in cart, updates quantity by 1
+    if ($return) {
+        $stmt = 'update cart set qty = :new_qty where user_id = :user_id and prod_id = :prod_id';
+        $query = $db->prepare($stmt);
+        $query->bindParam(':user_id', $user_id);
+        $query->bindParam(':prod_id', $prod_id);
+        $query->bindParam(':new_qty', $new_qty);
+    }
+
+    //if item does not exist in cart, inserts item into cart
+    else {
+        $stmt = 'insert into cart values (:user_id, :prod_id, 1)';
+        $query = $db->prepare($stmt);
+        $query->bindParam(':user_id', $user_id);
+        $query->bindParam(':prod_id', $prod_id);
+    }
+
     //if insert is successful, redirects to cart page
     if ($query->execute()) {
         header('location: ../cart.php');
