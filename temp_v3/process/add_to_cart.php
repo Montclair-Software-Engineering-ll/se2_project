@@ -49,9 +49,10 @@
         $query->bindParam(':prod_id', $prod_id);
     }
 
-    //if insert is successful, redirects to cart page
+    //if insert is successful, redirects to homepage page
     if ($query->execute()) {
-        header('location: ../cart.php');
+        $_SESSION['atc_success'] = true;
+        header('location: ../index.php');
     }
 
     //if insert fails, redirects to homepage
