@@ -10,7 +10,7 @@
 
 	//redirects user to log in page if not already logged in
 	if (!(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true)) {
-    	header('location: user_login.php');
+    	header('location: ../user_login.php');
         exit();
     }
 
