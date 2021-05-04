@@ -1,13 +1,27 @@
+<?php
+// Start Session
+session_start();
+
+$notice = '';
+
+// checks if the user tried to login and failed
+if (isset($_SESSION['login_fail']) && $_SESSION['login_fail'] == true) {
+		$notice = '<p>Incorrect login info. Please try again.</p>';
+
+		unset($_SESSION['login_fail']);
+	}
+?>
+
 <!DOCTYPE html>
 
 <html>
 	<head>
-		<title>Swift Care - User Login</title> 
+		<title>Swift Care - User Login</title>
 		<meta charset = "utf-8"/>
 		<meta name = "author" content = "SE2 - Group 2"/>
 		<meta name = "description" content = "Main store page of Swift Care"/>
 		<meta name = "viewport" content = "width=device-width, initial-scale=1"/>
-		
+
 		<!-- First link refers to the main.css file and second link is used for website icon -->
 		<link rel = "stylesheet" href = "css/blue_page.css" type = "text/css">
 		<link rel = "stylesheet" href = "css/main.css" type = "text/css"/>
@@ -23,7 +37,7 @@
 			</div>
 
 			<!-- Inside the box container, we have the labels and inputs for username and password. There is a link that sends a user to a signup page. -->
-			<form action = "" method = "post" autocomplete = "off">
+			<form action = "#" method = "post" autocomplete = "off">
 				<div class = "marginContentSpace">
 					<label class = "SignikaLabel" id = "LabelForm" for = "username_sec">Username:</label>
 					<input class = "InputField" id = "LoginSignupField" name = "username" type = "name" id = "username_sec" placeholder = "username123" required/>
@@ -33,7 +47,7 @@
 					<input class = "InputField" id = "LoginSignupField" name = "password" type = "password" id = "pass_sec" placeholder = "********" required/>
 				</div>
 				<div class = "marginContentSpace">
-					<a href = "#" class = "SignupButton">Don't have an account? Sign up here!</a>
+					<a href = "user_signup.php" class = "SignupButton">Don't have an account? Sign up here!</a>
 				</div>
 				<input class = "SubmitButton" type = "submit" value = "Submit"/>
 

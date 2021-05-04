@@ -48,6 +48,13 @@ if (isset($_SESSION['atc_failed']) && $_SESSION['atc_failed'] == true) {
 	unset($_SESSION['atc_failed']);
 }
 
+//checks if user has been redirected because item has been added to cart
+if (isset($_SESSION['atc_success']) && $_SESSION['atc_success'] == true) {
+	$notice = "<p>Item successfully added to cart!</p>";
+	
+	unset($_SESSION['atc_success']);
+}
+
 //general search statement for if no search was performed
 $stmt = 'select id, name, description, price, image from products';
 

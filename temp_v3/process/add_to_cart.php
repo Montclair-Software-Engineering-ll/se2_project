@@ -10,7 +10,7 @@
 
 	//redirects user to log in page if not already logged in
 	if (!(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true)) {
-    	header('location: user_login.php');
+    	header('location: ../user_login.php');
         exit();
     }
 
@@ -49,9 +49,10 @@
         $query->bindParam(':prod_id', $prod_id);
     }
 
-    //if insert is successful, redirects to cart page
+    //if insert is successful, redirects to homepage page
     if ($query->execute()) {
-        header('location: ../cart.php');
+        $_SESSION['atc_success'] = true;
+        header('location: ../index.php');
     }
 
     //if insert fails, redirects to homepage
