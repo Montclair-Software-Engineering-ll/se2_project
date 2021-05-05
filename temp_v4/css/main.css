@@ -268,3 +268,46 @@ p.SignikaText {
 	0% {opacity: 1;}
 	100% {opacity: 0;}
 }
+
+#state {
+	display: inline-block;
+	color: black;
+	padding: 10px;
+	width: 50%;
+	min-width: 120px;
+	border: none;
+	border-radius: 50px;
+}
+
+#orderTitle {
+	font-family: Orbitron, sans-serif;
+	color: #283a89;
+	text-align: center;
+	margin-top: 30px;
+	text-align: center;
+}
+
+option {
+	font-family: 'Signika', sans-serif;
+	color: black;
+	font-weight: normal;
+}
+
+select {
+	font-family: 'Signika', sans-serif;
+	color: black;
+	font-weight: normal;
+	border-radius: 5px;
+	width: 60px;
+	font-size: 12pt;
+}
+
+img.PaypalLogo {
+	border-radius: 25px; 
+	background-color: #283a89; 
+	width: 110px; 
+	position: absolute; 
+	right: 150px; 
+	bottom: 20px; 
+	padding: 1px
+}
