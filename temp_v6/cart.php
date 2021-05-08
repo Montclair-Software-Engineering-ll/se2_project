@@ -33,10 +33,26 @@
 	$return = $query->fetch();
 
 	//gets all items stored in cart for logged in user
-	$stmt = "select prod_id, qty from cart where user_id = ".$return['id'];
+	$stmt = "select prod_id, qty, add_time from cart where user_id = ".$return['id'];
 	$query = $db->prepare($stmt);
 	$query->execute();
 	$results = $query->fetchAll();
+
+	//deletes any items in cart that are older than 1 week
+	foreach ($results as $row) {
+		$add_time = strtotime($row['add_time']); //gets time item was added to cart
+		$curr_time = time(); //gets current time
+		$time_passed = $curr_time - $add_time; //finds time passed since item was added
+
+		//if item has been in cart for a week or more, deletes it
+		if ($time_passed >= 604800) {
+			$stmt = 'delete from cart where user_id = :user_id and prod_id = :prod_id';
+			$query = $db->prepare($stmt);
+			$query->bindParam(':user_id', $return['id']);
+			$query->bindParam(':prod_id', $row['prod_id']);
+			$query->execute();
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -84,6 +100,9 @@
 
 					//outputs row for each item
 					foreach ($results as $row) {
+						
+
+						//outputs item information
 						$stmt = "select * from products where id = :prod_id";
 						$query = $db->prepare($stmt);
 
@@ -92,31 +111,32 @@
 						$item = $query->fetch();
 
 						$subtotal = $item['price'] * $row['qty'];
-						echo '
-					<tr>
-						<td>
-							<img class = "CartIcon" src="'.$item['image'].'" alt="product image"> 
-							<p class = "SignikaText" id = "CartProductText">'.$item['name'].'</p> 
-							<p class = "SignikaText" id = "CartPriceText">Price: $'.$item['price'].'</p>
-							<form action="process/remove_from_cart.php" method="post">
-								<input type="hidden" name="prod_id" value="'.$row['prod_id'].'">
-								<input class = "RowButton" style = "margin-left: 0; margin-right: auto; position: relative; left: 10px" type="submit" value="Remove">
-							</form>
-						</td>
-						<td style = "padding: 0; margin: 0">
-							<form action="process/update_cart.php" method="post">
-								<input type = "number" name = "qty" size = "1" min = "1" max = "10" value ="'.$row['qty'].'">
-								<input type="hidden" name="prod_id" value="'.$row['prod_id'].'">
-								<input class = "RowButton" style = "margin-left: auto; margin-right: auto" type = "submit">
-							</form>
-						</td>
-						<td>
-							<p class = "SignikaText" id = "SubtotalText">$'.$subtotal.'</p> 
-						</td>
-					</tr>';
 
-					//accumulates subtotal
-					$total += $subtotal;
+						echo '
+						<tr>
+							<td>
+								<img class = "CartIcon" src="'.$item['image'].'" alt="product image"> 
+								<p class = "SignikaText" id = "CartProductText">'.$item['name'].'</p> 
+								<p class = "SignikaText" id = "CartPriceText">Price: $'.$item['price'].'</p>
+								<form action="process/remove_from_cart.php" method="post">
+									<input type="hidden" name="prod_id" value="'.$row['prod_id'].'">
+									<input class = "RowButton" style = "margin-left: 0; margin-right: auto; position: relative; left: 10px" type="submit" value="Remove">
+								</form>
+							</td>
+							<td style = "padding: 0; margin: 0">
+								<form action="process/update_cart.php" method="post">
+									<input type = "number" name = "qty" size = "1" min = "1" max = "10" value ="'.$row['qty'].'">
+									<input type="hidden" name="prod_id" value="'.$row['prod_id'].'">
+									<input class = "RowButton" style = "margin-left: auto; margin-right: auto" type = "submit">
+								</form>
+							</td>
+							<td>
+								<p class = "SignikaText" id = "SubtotalText">$'.$subtotal.'</p> 
+							</td>
+						</tr>';
+
+						//accumulates subtotal
+						$total += $subtotal;
 					}
 
 				//closes table and outputs total
