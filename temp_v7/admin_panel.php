@@ -4,6 +4,12 @@ session_start();
 
 $notice = "";
 
+//checks if admin is logged in; if not, redirects to admin login page
+if (!(isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] == true)) {
+	header('Location: admin_login.php');
+	exit();
+}
+
 //informs user if they have just logged in
 if (isset($_SESSION['admin_new_log']) && $_SESSION['admin_new_log'] == true) {
         $notice = "<p class = 'SignikaText' id = 'CorrectInfo'>You are now logged in!</p>";
