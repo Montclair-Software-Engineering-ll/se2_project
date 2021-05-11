@@ -44,7 +44,7 @@
 
     //if item does not exist in cart, inserts item into cart
     else {
-        $stmt = 'insert into cart values (:user_id, :prod_id, 1)';
+        $stmt = 'insert into cart (user_id, prod_id, qty) values (:user_id, :prod_id, 1)';
         $query = $db->prepare($stmt);
         $query->bindParam(':user_id', $user_id);
         $query->bindParam(':prod_id', $prod_id);
