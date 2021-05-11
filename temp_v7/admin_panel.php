@@ -50,7 +50,7 @@ if (isset($_SESSION['admin_already_li']) && $_SESSION['admin_already_li'] == tru
 			</div>
 			<div class = "marginContentSpace" style = "display: flex; align-items: center">
 				<img class = "LogoSmall" id = "LogoLabel" src = "images/admin_vpo.png">
-				<a href = "manage_order.php" class = "ClickButton" id = "AdminPanelButton">View and Process Orders</a>
+				<a href = "admin_orders.php" class = "ClickButton" id = "AdminPanelButton">View and Process Orders</a>
 			</div>
 			<!-- Dynamic message that displays a message to the user. -->
 			<?php echo $notice;?>
