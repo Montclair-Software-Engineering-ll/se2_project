@@ -122,7 +122,7 @@ if (isset($_POST['options'])) {
                     <?php
             echo '
             <button type="submit" class="searchButton" name="options" value="' . $_POST['order_id'] . '">
-            <p class="SignikaText" style="margin: 0; color: black">Cancel Order</p>
+            <p class="SignikaText" style="margin: 0; color: white">Cancel Order</p>
             </button>
             ';
         ?>
