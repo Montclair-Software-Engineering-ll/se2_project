@@ -31,11 +31,23 @@ if (isset($_POST['options'])) {
 <head>
     <title>Swift Care - Order Details</title>
     <meta charset="utf-8" />
+    <meta name="author" content="SE2 - Group 2" />
+    <meta name="description" content="Main store page of Swift Care" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- First link refers to the main.css file and second link is used for website icon -->
+    <link rel="stylesheet" href="css/blue_page.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+    <link rel="icon" href="images/sc_logo_admin_K7A_icon.ico" />
 </head>
 
 <body>
-    <h1>Order Details</h1>
-    <?php
+    <div class="BoxPanel" id="LoginPanel">
+        <div style="display: flex; align-items: center">
+            <img class="LogoSmall" id="LogoForm" src="images/user_panel.png" alt="Swift Care logo" />
+            <h1 class="OrbitronTitle" id="TitleForm">User - View Orders</h1>
+        </div>
+        <center>
+            <?php
     // SQL statement to display order table contents with matching orderID
     try {
         $stmt = $db->prepare("SELECT * FROM orders WHERE orderID=?");
@@ -58,13 +70,22 @@ if (isset($_POST['options'])) {
         echo "Connection failed: " . $e->getMessage();  // Prints error messages while testing
     }
     ?>
-    <table>
-        <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-        </tr>
-        <?php
+            <table class="marginContentSpace" style="margin-bottom: 50px">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" style="padding-right: 20px;">
+                            <p class="SignikaText" style="color: black">Product</p>
+                        </th>
+                        <th scope="col" style="padding-right: 20px;">
+                            <p class="SignikaText" style="color: black">Price</p>
+                        </th>
+                        <th scope="col" style="padding-right: 20px;">
+                            <p class="SignikaText" style="color: black">Quantity</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
         // SQL statement to display all orderitems rows with an orderID that matches the orderID in the orders table
         try {
             $stmt = $db->prepare("SELECT * FROM orderitems OI, products P WHERE OI.IID=P.ID AND OI.orderID=?");
@@ -94,11 +115,38 @@ if (isset($_POST['options'])) {
             echo "Connection failed: " . $e->getMessage();  // Prints error messages while testing
         }
         ?>
-    </table>
-    <div style="margin-top: 80px">
-        <form action="" method="post">
-        <?php
+                </tbody>
+            </table>
+            <div style="margin-top: 80px">
+                <form action="" method="post">
+                    <?php
             echo '
+            <button type="submit" class="searchButton" name="options" value="' . $_POST['order_id'] . '">
+            <p class="SignikaText" style="margin: 0; color: black">Cancel Order</p>
+            </button>
+            ';
+        ?>
+                </form>
+                <a href="user_profile.php">
+                    <img class="Icon" id="UserIcon" style="position: absolute; left: 20px; bottom: 25px;"
+                        src="images/back_arrow.png" alt="Back Arrow" />
+                </a>
+            </div>
+</body>
+<!-- Footer portion is used to showcase group number, college, and course. -->
+<footer style="text-align: center">
+    <p class="SignikaText" id="footerText">
+        &copy; 2021 - 2021 Group 2.<br />
+        Montclair State University - Computer Science and Technology.<br />
+        CSIT415 - Software Engineering II.
+    </p>
+</footer>
+
+</html>
+
+<?php
+}
+?>
             <button type="submit" class="searchButton" name="options" value="' . $_POST['order_id'] . '">
             <p class="SignikaText" style="margin: 0; color: white">Cancel Order</p>
             </button>
